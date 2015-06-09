@@ -26,7 +26,7 @@ class Puppet::Util::NetworkDevice::Script::Facts
 
     if @url.query
       CGI.parse(@url.query).each do |k, v|
-        args << "--%s='%s'" % [URI.decode(k), URI.decode(v.first)]
+        args << "--%s='%s'" % [URI.decode(k).gsub('_','-'), URI.decode(v.first)]
       end
     end
 
